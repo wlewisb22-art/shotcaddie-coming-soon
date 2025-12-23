@@ -3,159 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShotCaddie Simulation</title>
+<title>ShotCaddie - Coming Soon</title>
 <style>
-body, html {
-  margin:0;
-  padding:0;
-  width:100%;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  background:#0a0a0a;
-  font-family: Arial, sans-serif;
-  color: #fff;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-h1 {
-  margin-top: 20px;
-  text-align:center;
-  text-shadow: 0 0 20px #00ffe0;
-}
+  html, body {
+    min-height: 100%;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background: #0a0a0a;
+  }
 
-.shotcaddie-container {
-  position: relative;
-  width: 600px;
-  height: 600px;
-  margin-top: 40px;
-  background: #111;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+  }
 
-svg {
-  width: 100%;
-  height: 100%;
-}
+  /* Background image */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('file_00000000b6d071fdbd0c3eb37c76fdb6.png') no-repeat center top;
+    background-size: contain;
+    z-index: -3;
+    filter: brightness(0.6);
+  }
 
-.bottle {
-  fill: #888;
-  stroke: #555;
-  stroke-width: 2;
-}
+  /* Moving liquid overlay using animated gradient */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(45deg, rgba(0,255,190,0.1), rgba(0,150,255,0.1), rgba(255,100,200,0.1), rgba(0,255,190,0.1));
+    background-size: 400% 400%;
+    z-index: -2;
+    animation: moveLiquid 15s ease infinite;
+  }
 
-.spout {
-  fill: #ffea00;
-  stroke: #fff;
-  stroke-width: 2;
-}
+  @keyframes moveLiquid {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-.stream {
-  fill:none;
-  stroke-width: 8;
-  stroke-linecap: round;
-  stroke-opacity: 0.7;
-  stroke: url(#flowGradient);
-}
+  /* Central liquid flow effect */
+  .liquid-flow {
+    position: fixed;
+    top: 200px; /* adjust to where the spout is in your image */
+    left: 50%;
+    width: 20px;
+    height: 200px;
+    margin-left: -10px; /* center */
+    background: radial-gradient(circle, rgba(0,255,190,0.7) 0%, rgba(0,255,190,0.1) 80%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: flowMove 2s infinite alternate, flowPulse 1.5s infinite ease-in-out;
+  }
+
+  @keyframes flowMove {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(15px); }
+  }
+
+  @keyframes flowPulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-top: 40px;
+    margin-bottom: 0.2em;
+    text-shadow: 0 0 20px #00ffe0, 0 0 40px #00ffe0;
+    animation: glow 2s ease-in-out infinite alternate;
+    text-align: center;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0; }
+    to   { text-shadow: 0 0 30px #00ffe0, 0 0 60px #00ffe0; }
+  }
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    text-shadow: 0 0 10px #00ffe0;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1.5em;
+    opacity: 0;
+    animation: fadeIn 2s forwards 1s;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  input[type="email"] {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #00ffae;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+
+  button:hover { background-color: #00dd95; }
+
+  p {
+    margin-top: 1.5em;
+    font-size: 1em;
+    text-shadow: 0 0 5px #000;
+    text-align: center;
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 2em; margin-top: 20px; }
+    h2 { font-size: 1.5em; }
+  }
 
 </style>
 </head>
 <body>
 
-<h1>SHOTCADDIE Simulation</h1>
+<h1>SHOTCADDIE</h1>
+<h2>Coming in 2<sup>nd</sup> Quarter of 2026</h2>
 
-<div class="shotcaddie-container">
-<svg viewBox="0 0 600 600">
-  <!-- Gradient for flowing liquid -->
-  <defs>
-    <linearGradient id="flowGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#00ffe0"/>
-      <stop offset="50%" stop-color="#00ffae"/>
-      <stop offset="100%" stop-color="#00ffe0"/>
-      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="0 1" dur="1.2s" repeatCount="indefinite"/>
-    </linearGradient>
-  </defs>
+<form action="https://formspree.io/f/abcdwxyz" method="POST">
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Notify Me</button>
+</form>
 
-  <!-- Bottles 4x4 -->
-  <g id="bottles"></g>
+<p>Join our early access list to get updates!</p>
 
-  <!-- Tubes -->
-  <g id="tubes"></g>
+<!-- Liquid flow element -->
+<div class="liquid-flow"></div>
 
-  <!-- Central Spout -->
-  <circle class="spout" cx="300" cy="500" r="15"/>
-</svg>
-</div>
-
-<script>
-const svgNS = "http://www.w3.org/2000/svg";
-const bottlesGroup = document.getElementById("bottles");
-const tubesGroup = document.getElementById("tubes");
-
-// Bottle layout
-const rows = 4;
-const cols = 4;
-const bottleWidth = 40;
-const bottleHeight = 100;
-const spacingX = 120;
-const spacingY = 100;
-const startX = 80;
-const startY = 50;
-const spoutX = 300;
-const spoutY = 500;
-
-// Create bottles
-const bottles = [];
-for(let r=0; r<rows; r++){
-  for(let c=0; c<cols; c++){
-    const x = startX + c*spacingX;
-    const y = startY + r*spacingY;
-    const bottle = document.createElementNS(svgNS,"rect");
-    bottle.setAttribute("x", x);
-    bottle.setAttribute("y", y);
-    bottle.setAttribute("width", bottleWidth);
-    bottle.setAttribute("height", bottleHeight);
-    bottle.setAttribute("class","bottle");
-    bottlesGroup.appendChild(bottle);
-    bottles.push({x: x+bottleWidth/2, y: y+bottleHeight}); // bottom center of bottle
-  }
-}
-
-// Create tubes
-bottles.forEach((bottle,i)=>{
-  const path = document.createElementNS(svgNS,"path");
-  const cp1x = bottle.x;
-  const cp1y = bottle.y + 40 + Math.random()*20; // random wobble
-  const cp2x = spoutX + (Math.random()*40-20);
-  const cp2y = spoutY - 40;
-  const d = `M${bottle.x},${bottle.y} C${cp1x},${cp1y} ${cp2x},${cp2y} ${spoutX},${spoutY}`;
-  path.setAttribute("d", d);
-  path.setAttribute("class","stream");
-  tubesGroup.appendChild(path);
-});
-
-// Animate streams (stroke dash)
-const streams = document.querySelectorAll(".stream");
-streams.forEach(s=>{
-  s.setAttribute("stroke-dasharray","20 80");
-  s.setAttribute("stroke-dashoffset","100");
-});
-
-function animateStreams(){
-  streams.forEach(s=>{
-    let offset = parseFloat(s.getAttribute("stroke-dashoffset")) || 100;
-    offset -= 4;
-    if(offset < 0) offset = 100;
-    s.setAttribute("stroke-dashoffset", offset);
-  });
-  requestAnimationFrame(animateStreams);
-}
-animateStreams();
-
-</script>
 </body>
 </html>
