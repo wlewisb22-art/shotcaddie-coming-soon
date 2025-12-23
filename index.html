@@ -98,24 +98,9 @@ svg {
 
 .stream {
   fill: none;
-  stroke-width: 8;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-opacity: 0.7;
-  filter: drop-shadow(0 0 8px #00ffe0);
-  stroke-dasharray: 20 80;
-  animation: flow 1.5s linear infinite, pulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes flow {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 100; }
-}
-
-@keyframes pulse {
-  0% { stroke-width: 6; }
-  50% { stroke-width: 10; }
-  100% { stroke-width: 6; }
 }
 
 </style>
@@ -133,28 +118,72 @@ svg {
 <p>Join our early access list to get updates!</p>
 
 <div class="shotcaddie-container">
-  <img src="3546ccad-906b-4cfb-8ebe-cbc7ee146ed9-md.jpeg" alt="ShotCaddie Image">
+  <img src="file_00000000894471fd9386e739c677a265.png" alt="ShotCaddie Image">
 
   <svg viewBox="0 0 600 600">
-    <!-- 16 tube streams -->
-    <path class="stream" stroke="#FF4500" d="M80,150 C120,120 200,100 300,500"/>
-    <path class="stream" stroke="#FFA500" d="M160,150 C200,120 220,100 300,500"/>
-    <path class="stream" stroke="#32CD32" d="M240,150 C280,120 260,100 300,500"/>
-    <path class="stream" stroke="#1E90FF" d="M320,150 C360,120 300,100 300,500"/>
-    <path class="stream" stroke="#FF69B4" d="M400,150 C440,120 320,100 300,500"/>
-    <path class="stream" stroke="#FF6347" d="M480,150 C520,120 350,100 300,500"/>
-    <path class="stream" stroke="#FFD700" d="M80,230 C120,200 200,150 300,500"/>
-    <path class="stream" stroke="#7CFC00" d="M160,230 C200,200 220,150 300,500"/>
-    <path class="stream" stroke="#00BFFF" d="M240,230 C280,200 260,150 300,500"/>
-    <path class="stream" stroke="#FF1493" d="M320,230 C360,200 300,150 300,500"/>
-    <path class="stream" stroke="#8A2BE2" d="M400,230 C440,200 320,150 300,500"/>
-    <path class="stream" stroke="#00FA9A" d="M480,230 C520,200 350,150 300,500"/>
-    <path class="stream" stroke="#FF4500" d="M80,310 C120,280 200,200 300,500"/>
-    <path class="stream" stroke="#1E90FF" d="M160,310 C200,280 220,200 300,500"/>
-    <path class="stream" stroke="#FF69B4" d="M240,310 C280,280 260,200 300,500"/>
-    <path class="stream" stroke="#32CD32" d="M320,310 C360,280 300,200 300,500"/>
+    <!-- 16 tube paths -->
+    <path id="tube1" d="M80,150 C120,120 200,100 300,500"/>
+    <path id="tube2" d="M160,150 C200,120 220,100 300,500"/>
+    <path id="tube3" d="M240,150 C280,120 260,100 300,500"/>
+    <path id="tube4" d="M320,150 C360,120 300,100 300,500"/>
+    <path id="tube5" d="M400,150 C440,120 320,100 300,500"/>
+    <path id="tube6" d="M480,150 C520,120 350,100 300,500"/>
+    <path id="tube7" d="M80,230 C120,200 200,150 300,500"/>
+    <path id="tube8" d="M160,230 C200,200 220,150 300,500"/>
+    <path id="tube9" d="M240,230 C280,200 260,150 300,500"/>
+    <path id="tube10" d="M320,230 C360,200 300,150 300,500"/>
+    <path id="tube11" d="M400,230 C440,200 320,150 300,500"/>
+    <path id="tube12" d="M480,230 C520,200 350,150 300,500"/>
+    <path id="tube13" d="M80,310 C120,280 200,200 300,500"/>
+    <path id="tube14" d="M160,310 C200,280 220,200 300,500"/>
+    <path id="tube15" d="M240,310 C280,280 260,200 300,500"/>
+    <path id="tube16" d="M320,310 C360,280 300,200 300,500"/>
+
+    <!-- Multi-layer streams for glow and thickness -->
+    <g id="streams"></g>
   </svg>
 </div>
+
+<script>
+// Generate glowing streams with wobble and pulse
+const paths = [];
+for(let i=1; i<=16; i++) paths.push(document.getElementById(`tube${i}`));
+
+const svgNS = "http://www.w3.org/2000/svg";
+const colors = ["#FF4500","#FFA500","#32CD32","#1E90FF","#FF69B4","#FF6347","#FFD700","#7CFC00","#00BFFF","#FF1493","#8A2BE2","#00FA9A","#FF4500","#1E90FF","#FF69B4","#32CD32"];
+
+paths.forEach((path,i)=>{
+  // Create multi-layer stroke for glow effect
+  for(let layer=0; layer<3; layer++){
+    const stream = document.createElementNS(svgNS,"path");
+    stream.setAttribute("d", path.getAttribute("d"));
+    stream.setAttribute("stroke", colors[i]);
+    stream.setAttribute("stroke-width", 4 + layer*2);
+    stream.setAttribute("stroke-opacity", 0.2 + 0.3/(layer+1));
+    stream.setAttribute("fill","none");
+    stream.setAttribute("class","stream");
+    document.getElementById("streams").appendChild(stream);
+  }
+});
+
+// Animate paths with wobble
+function animateWobble(){
+  paths.forEach((path,i)=>{
+    const d = path.getAttribute("d");
+    // Slight random offset on control points
+    const newD = d.replace(/C(\d+),(\d+) (\d+),(\d+) (\d+),(\d+)/, (match,x1,y1,x2,y2,x3,y3)=>{
+      const wobble = ()=> (Math.random()*6 -3);
+      return `C${+x1+wobble()},${+y1+wobble()} ${+x2+wobble()},${+y2+wobble()} ${+x3+wobble()},${+y3+wobble()}`;
+    });
+    path.setAttribute("d", newD);
+    // Also update cloned streams
+    const layers = Array.from(document.querySelectorAll(`#streams path`)).slice(i*3,(i+1)*3);
+    layers.forEach(l=>l.setAttribute("d", newD));
+  });
+}
+
+setInterval(animateWobble, 500);
+</script>
 
 </body>
 </html>
