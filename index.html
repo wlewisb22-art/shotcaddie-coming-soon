@@ -5,117 +5,118 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShotCaddie - Coming Soon</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background: #0a0a0a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
 
-  html, body {
-    min-height: 100%;
-    font-family: 'Arial', sans-serif;
-    color: white;
-    overflow-x: hidden;
-    background: #0a0a0a;
-  }
+h1 {
+  margin-top: 40px;
+  font-size: 3em;
+  text-align: center;
+  text-shadow: 0 0 20px #00ffe0, 0 0 40px #00ffe0;
+  animation: glow 2s ease-in-out infinite alternate;
+}
 
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    position: relative;
-  }
+h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px #00ffe0;
+}
 
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('3546ccad-906b-4cfb-8ebe-cbc7ee146ed9-md.jpeg') no-repeat center top;
-    background-size: contain;
-    z-index: -2;
-    filter: brightness(0.6);
-  }
+@keyframes glow {
+  from { text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0; }
+  to   { text-shadow: 0 0 30px #00ffe0, 0 0 60px #00ffe0; }
+}
 
-  h1 {
-    font-size: 3em;
-    margin-top: 40px;
-    margin-bottom: 0.2em;
-    text-shadow: 0 0 20px #00ffe0, 0 0 40px #00ffe0;
-    animation: glow 2s ease-in-out infinite alternate;
-    text-align: center;
-  }
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.5em;
+  width: 100%;
+  max-width: 400px;
+}
 
-  @keyframes glow {
-    from { text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0; }
-    to   { text-shadow: 0 0 30px #00ffe0, 0 0 60px #00ffe0; }
-  }
+input[type="email"], button {
+  padding: 12px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
 
-  h2 {
-    font-size: 2em;
-    margin-bottom: 1em;
-    text-shadow: 0 0 10px #00ffe0;
-    text-align: center;
-  }
+button {
+  background-color: #00ffae;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 1.5em;
-    width: 100%;
-    max-width: 400px;
-  }
+button:hover { background-color: #00dd95; }
 
-  input[type="email"] {
-    padding: 12px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: none;
-    width: 100%;
-  }
+p {
+  margin-top: 1em;
+  font-size: 1em;
+  text-align: center;
+  text-shadow: 0 0 5px #000;
+}
 
-  button {
-    padding: 12px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    background-color: #00ffae;
-    color: #000;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    width: 100%;
-  }
+.shotcaddie-container {
+  position: relative;
+  margin-top: 40px;
+  width: 600px;
+  max-width: 90vw;
+}
 
-  button:hover { background-color: #00dd95; }
+.shotcaddie-container img {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+}
 
-  p {
-    margin-top: 1.5em;
-    font-size: 1em;
-    text-shadow: 0 0 5px #000;
-    text-align: center;
-  }
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 
-  svg {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: visible;
-  }
+.stream {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-opacity: 0.7;
+  filter: drop-shadow(0 0 8px #00ffe0);
+  stroke-dasharray: 20 80;
+  animation: flow 1.5s linear infinite, pulse 2s ease-in-out infinite alternate;
+}
 
-  .drop {
-    r: 6;
-    fill-opacity: 0.8;
-    stroke: white;
-    stroke-width: 0.5px;
-  }
+@keyframes flow {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 100; }
+}
 
-  /* Animation for liquid drops along path */
-  @keyframes flowAnim {
-    0% { offset-distance: 0%; }
-    100% { offset-distance: 100%; }
-  }
+@keyframes pulse {
+  0% { stroke-width: 6; }
+  50% { stroke-width: 10; }
+  100% { stroke-width: 6; }
+}
 
 </style>
 </head>
@@ -131,122 +132,29 @@
 
 <p>Join our early access list to get updates!</p>
 
-<svg>
-  <!-- Define 16 Bezier paths for tubes -->
-  <path id="tube1" d="M200,300 C220,250 300,200 400,350" stroke="transparent" fill="none"/>
-  <path id="tube2" d="M250,300 C270,240 320,200 400,350" stroke="transparent" fill="none"/>
-  <path id="tube3" d="M300,300 C320,250 350,210 400,350" stroke="transparent" fill="none"/>
-  <path id="tube4" d="M350,300 C370,250 360,220 400,350" stroke="transparent" fill="none"/>
-  <path id="tube5" d="M400,300 C420,250 370,220 400,350" stroke="transparent" fill="none"/>
-  <path id="tube6" d="M450,300 C470,250 380,210 400,350" stroke="transparent" fill="none"/>
-  <path id="tube7" d="M200,350 C220,300 300,250 400,350" stroke="transparent" fill="none"/>
-  <path id="tube8" d="M250,350 C270,290 320,260 400,350" stroke="transparent" fill="none"/>
-  <path id="tube9" d="M300,350 C320,300 350,270 400,350" stroke="transparent" fill="none"/>
-  <path id="tube10" d="M350,350 C370,300 360,280 400,350" stroke="transparent" fill="none"/>
-  <path id="tube11" d="M400,350 C420,300 370,280 400,350" stroke="transparent" fill="none"/>
-  <path id="tube12" d="M450,350 C470,300 380,280 400,350" stroke="transparent" fill="none"/>
-  <path id="tube13" d="M200,400 C220,350 300,300 400,350" stroke="transparent" fill="none"/>
-  <path id="tube14" d="M250,400 C270,340 320,310 400,350" stroke="transparent" fill="none"/>
-  <path id="tube15" d="M300,400 C320,350 350,320 400,350" stroke="transparent" fill="none"/>
-  <path id="tube16" d="M350,400 C370,350 360,330 400,350" stroke="transparent" fill="none"/>
+<div class="shotcaddie-container">
+  <img src="3546ccad-906b-4cfb-8ebe-cbc7ee146ed9-md.jpeg" alt="ShotCaddie Image">
 
-  <!-- Animate drops along each path -->
-  <circle r="6" fill="#FF4500">
-    <animateMotion dur="2s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube1"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#FFA500">
-    <animateMotion dur="2.3s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube2"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#32CD32">
-    <animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube3"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#1E90FF">
-    <animateMotion dur="2.5s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube4"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#FF69B4">
-    <animateMotion dur="2.1s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube5"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#FF6347">
-    <animateMotion dur="1.9s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube6"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#FFD700">
-    <animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube7"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#7CFC00">
-    <animateMotion dur="2s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube8"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#00BFFF">
-    <animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube9"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#FF1493">
-    <animateMotion dur="2.1s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube10"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#8A2BE2">
-    <animateMotion dur="2.3s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube11"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#00FA9A">
-    <animateMotion dur="2.0s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube12"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#FF4500">
-    <animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube13"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#1E90FF">
-    <animateMotion dur="2.1s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube14"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#FF69B4">
-    <animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube15"/>
-    </animateMotion>
-  </circle>
-
-  <circle r="6" fill="#32CD32">
-    <animateMotion dur="2s" repeatCount="indefinite" rotate="auto">
-      <mpath xlink:href="#tube16"/>
-    </animateMotion>
-  </circle>
-</svg>
+  <svg viewBox="0 0 600 600">
+    <!-- 16 tube streams -->
+    <path class="stream" stroke="#FF4500" d="M80,150 C120,120 200,100 300,500"/>
+    <path class="stream" stroke="#FFA500" d="M160,150 C200,120 220,100 300,500"/>
+    <path class="stream" stroke="#32CD32" d="M240,150 C280,120 260,100 300,500"/>
+    <path class="stream" stroke="#1E90FF" d="M320,150 C360,120 300,100 300,500"/>
+    <path class="stream" stroke="#FF69B4" d="M400,150 C440,120 320,100 300,500"/>
+    <path class="stream" stroke="#FF6347" d="M480,150 C520,120 350,100 300,500"/>
+    <path class="stream" stroke="#FFD700" d="M80,230 C120,200 200,150 300,500"/>
+    <path class="stream" stroke="#7CFC00" d="M160,230 C200,200 220,150 300,500"/>
+    <path class="stream" stroke="#00BFFF" d="M240,230 C280,200 260,150 300,500"/>
+    <path class="stream" stroke="#FF1493" d="M320,230 C360,200 300,150 300,500"/>
+    <path class="stream" stroke="#8A2BE2" d="M400,230 C440,200 320,150 300,500"/>
+    <path class="stream" stroke="#00FA9A" d="M480,230 C520,200 350,150 300,500"/>
+    <path class="stream" stroke="#FF4500" d="M80,310 C120,280 200,200 300,500"/>
+    <path class="stream" stroke="#1E90FF" d="M160,310 C200,280 220,200 300,500"/>
+    <path class="stream" stroke="#FF69B4" d="M240,310 C280,280 260,200 300,500"/>
+    <path class="stream" stroke="#32CD32" d="M320,310 C360,280 300,200 300,500"/>
+  </svg>
+</div>
 
 </body>
 </html>
