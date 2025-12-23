@@ -18,65 +18,20 @@
   body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     padding: 20px;
     position: relative;
   }
 
-  /* Background image */
   body::before {
     content: "";
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: url('file_00000000b6d071fdbd0c3eb37c76fdb6.png') no-repeat center top;
+    background: url('file_00000000ba3471f8bee67d0cddd52614.png') no-repeat center top;
     background-size: contain;
-    z-index: -3;
-    filter: brightness(0.6);
-  }
-
-  /* Moving liquid overlay using animated gradient */
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(45deg, rgba(0,255,190,0.1), rgba(0,150,255,0.1), rgba(255,100,200,0.1), rgba(0,255,190,0.1));
-    background-size: 400% 400%;
     z-index: -2;
-    animation: moveLiquid 15s ease infinite;
-  }
-
-  @keyframes moveLiquid {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Central liquid flow effect */
-  .liquid-flow {
-    position: fixed;
-    top: 200px; /* adjust to where the spout is in your image */
-    left: 50%;
-    width: 20px;
-    height: 200px;
-    margin-left: -10px; /* center */
-    background: radial-gradient(circle, rgba(0,255,190,0.7) 0%, rgba(0,255,190,0.1) 80%);
-    border-radius: 50%;
-    z-index: -1;
-    animation: flowMove 2s infinite alternate, flowPulse 1.5s infinite ease-in-out;
-  }
-
-  @keyframes flowMove {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(15px); }
-  }
-
-  @keyframes flowPulse {
-    0% { opacity: 0.7; }
-    50% { opacity: 1; }
-    100% { opacity: 0.7; }
+    filter: brightness(0.6);
   }
 
   h1 {
@@ -106,8 +61,6 @@
     align-items: center;
     gap: 10px;
     margin-top: 1.5em;
-    opacity: 0;
-    animation: fadeIn 2s forwards 1s;
     width: 100%;
     max-width: 400px;
   }
@@ -142,11 +95,26 @@
     text-align: center;
   }
 
-  @keyframes fadeIn { to { opacity: 1; } }
+  svg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: visible;
+  }
 
-  @media (max-width: 600px) {
-    h1 { font-size: 2em; margin-top: 20px; }
-    h2 { font-size: 1.5em; }
+  .drop {
+    r: 6;
+    fill-opacity: 0.8;
+    stroke: white;
+    stroke-width: 0.5px;
+  }
+
+  /* Animation for liquid drops along path */
+  @keyframes flowAnim {
+    0% { offset-distance: 0%; }
+    100% { offset-distance: 100%; }
   }
 
 </style>
@@ -156,16 +124,129 @@
 <h1>SHOTCADDIE</h1>
 <h2>Coming in 2<sup>nd</sup> Quarter of 2026</h2>
 
-<form action="https://formspree.io/f/xqezneng" method="POST">
- <input type="hidden" name="_redirect" value="https://shotcaddie.net/thanks.html">
+<form action="https://formspree.io/f/abcdwxyz" method="POST">
   <input type="email" name="email" placeholder="Enter your email" required>
   <button type="submit">Notify Me</button>
 </form>
 
 <p>Join our early access list to get updates!</p>
 
-<!-- Liquid flow element -->
-<div class="liquid-flow"></div>
+<svg>
+  <!-- Define 16 Bezier paths for tubes -->
+  <path id="tube1" d="M200,300 C220,250 300,200 400,350" stroke="transparent" fill="none"/>
+  <path id="tube2" d="M250,300 C270,240 320,200 400,350" stroke="transparent" fill="none"/>
+  <path id="tube3" d="M300,300 C320,250 350,210 400,350" stroke="transparent" fill="none"/>
+  <path id="tube4" d="M350,300 C370,250 360,220 400,350" stroke="transparent" fill="none"/>
+  <path id="tube5" d="M400,300 C420,250 370,220 400,350" stroke="transparent" fill="none"/>
+  <path id="tube6" d="M450,300 C470,250 380,210 400,350" stroke="transparent" fill="none"/>
+  <path id="tube7" d="M200,350 C220,300 300,250 400,350" stroke="transparent" fill="none"/>
+  <path id="tube8" d="M250,350 C270,290 320,260 400,350" stroke="transparent" fill="none"/>
+  <path id="tube9" d="M300,350 C320,300 350,270 400,350" stroke="transparent" fill="none"/>
+  <path id="tube10" d="M350,350 C370,300 360,280 400,350" stroke="transparent" fill="none"/>
+  <path id="tube11" d="M400,350 C420,300 370,280 400,350" stroke="transparent" fill="none"/>
+  <path id="tube12" d="M450,350 C470,300 380,280 400,350" stroke="transparent" fill="none"/>
+  <path id="tube13" d="M200,400 C220,350 300,300 400,350" stroke="transparent" fill="none"/>
+  <path id="tube14" d="M250,400 C270,340 320,310 400,350" stroke="transparent" fill="none"/>
+  <path id="tube15" d="M300,400 C320,350 350,320 400,350" stroke="transparent" fill="none"/>
+  <path id="tube16" d="M350,400 C370,350 360,330 400,350" stroke="transparent" fill="none"/>
+
+  <!-- Animate drops along each path -->
+  <circle r="6" fill="#FF4500">
+    <animateMotion dur="2s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube1"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#FFA500">
+    <animateMotion dur="2.3s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube2"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#32CD32">
+    <animateMotion dur="1.8s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube3"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#1E90FF">
+    <animateMotion dur="2.5s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube4"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#FF69B4">
+    <animateMotion dur="2.1s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube5"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#FF6347">
+    <animateMotion dur="1.9s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube6"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#FFD700">
+    <animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube7"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#7CFC00">
+    <animateMotion dur="2s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube8"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#00BFFF">
+    <animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube9"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#FF1493">
+    <animateMotion dur="2.1s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube10"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#8A2BE2">
+    <animateMotion dur="2.3s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube11"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#00FA9A">
+    <animateMotion dur="2.0s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube12"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#FF4500">
+    <animateMotion dur="2.2s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube13"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#1E90FF">
+    <animateMotion dur="2.1s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube14"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#FF69B4">
+    <animateMotion dur="2.4s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube15"/>
+    </animateMotion>
+  </circle>
+
+  <circle r="6" fill="#32CD32">
+    <animateMotion dur="2s" repeatCount="indefinite" rotate="auto">
+      <mpath xlink:href="#tube16"/>
+    </animateMotion>
+  </circle>
+</svg>
 
 </body>
 </html>
