@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>How Shot Caddie Works – Automated Shot & Cocktail Dispenser</title>
+  <meta name="description" content="Learn how Shot Caddie works: load up to 16 spirits/mixers, match recipes, calibrate pours, and dispense shots or cocktails with an optional AI-enabled mixologist experience." />
+
+  <link rel="canonical" href="https://shotcaddie.net/how-it-works.html" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background:#0a0a0a; color:#fff; padding:20px; }
+    .wrap { max-width: 980px; margin: 0 auto; display:flex; flex-direction:column; gap:14px; }
+    a { color:#00ffe0; text-decoration:none; font-weight:bold; }
+    a:hover { text-decoration:underline; }
+    .card { background: rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:18px; }
+    h1 { font-size:2.2em; text-shadow: 0 0 18px rgba(0,255,224,0.25); }
+    h2 { margin-top: 6px; margin-bottom: 8px; font-size: 1.4em; color:#00ffe0; }
+    p, li { line-height:1.6; opacity:0.95; }
+    ul { margin-left:18px; }
+    nav { display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 6px; }
+    .pill { display:inline-block; padding:8px 12px; border:1px solid rgba(0,255,224,0.25); border-radius:999px; background:rgba(255,255,255,0.04); margin-right:10px; margin-top:8px; font-weight:bold; }
+    footer { text-align:center; opacity:0.85; margin-top: 8px; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"How Shot Caddie Works",
+    "url":"https://shotcaddie.net/how-it-works.html",
+    "about":{
+      "@type":"Product",
+      "name":"Shot Caddie",
+      "url":"https://shotcaddie.net"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="/">← Home</a>
+      <a href="/faq.html">FAQ</a>
+    </nav>
+
+    <div class="card">
+      <h1>How Shot Caddie works</h1>
+      <p>
+        Shot Caddie is designed around one idea: <strong>load the bottles you actually have</strong>, then let the system
+        <strong>show what you can make</strong> and <strong>pour it consistently</strong>.
+      </p>
+      <span class="pill">Up to 16 bottles</span>
+      <span class="pill">Recipe matching</span>
+      <span class="pill">Calibration-focused</span>
+      <span class="pill">Optional AI assistance</span>
+    </div>
+
+    <div class="card">
+      <h2>1) Load your spirits & mixers</h2>
+      <p>
+        Choose up to <strong>16 spirits, liqueurs, juices, and mixers</strong>. Assign each slot a label so Shot Caddie knows what’s available.
+        This is the foundation for recipe matching and smart suggestions.
+      </p>
+      <ul>
+        <li>Build a “party” setup (vodka/rum/tequila + juices)</li>
+        <li>Build a “cocktail” setup (liqueurs + citrus + mixers)</li>
+        <li>Change bottles quickly without re-learning the whole system</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>2) See what you can make (recipe matching)</h2>
+      <p>
+        Once your bottles are loaded, Shot Caddie can surface shots and cocktails that match your current inventory.
+        You can also allow practical substitutions (example: swapping a similar rum or vodka flavor when a recipe calls for something specific).
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>3) Calibrate for consistent pours</h2>
+      <p>
+        Drinks pour differently depending on viscosity and tubing setup. Shot Caddie is built around calibration so you can dial in
+        reliable timing (spirits vs. juices, etc.) and get repeatable pours.
+      </p>
+      <ul>
+        <li>Prime and test pour routines</li>
+        <li>Per-ingredient tuning</li>
+        <li>Consistent pour sizes over time</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>4) Pour now or queue multiple pours</h2>
+      <p>
+        For entertaining, speed matters. Shot Caddie is designed to support quick pours and multi-shot flows so you can keep things moving.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>5) Optional AI-enabled mixologist</h2>
+      <p>
+        Want ideas? The AI-enabled experience can suggest recipes you can make from what’s loaded, recommend swaps, and help you discover
+        combinations — while still keeping you in control.
+      </p>
+      <p style="opacity:0.85;">
+        (AI features are optional and may vary at launch. Join the list on the homepage for updates.)
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Get updates</h2>
+      <p>
+        Head back to the homepage to join the early access list:
+        <a href="/">shotcaddie.net</a>
+      </p>
+    </div>
+
+    <footer>© <span id="year"></span> Shot Caddie</footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
