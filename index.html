@@ -1,189 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shot Caddie – Automated Cocktail & Shot Dispenser</title>
-<meta name="description" content="Shot Caddie is an automated countertop cocktail and shot dispenser that pours perfect shots every time. Ideal for home bars and events.">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  html, body {
-    min-height: 100%;
-    font-family: 'Arial', sans-serif;
-    color: white;
-    overflow-x: hidden;
-    background: #0a0a0a;
+  <title>Shot Caddie – Automated Shot & Cocktail Dispenser (AI-Enabled)</title>
+  <meta name="description" content="Shot Caddie is a smart, automated shot and cocktail dispenser that measures and pours drinks from up to 16 spirits and mixers. AI-enabled recipe suggestions, fast pours, and easy bottle swaps. Coming Q2 2026." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://shotcaddie.net/" />
+
+  <!-- Open Graph (for sharing) -->
+  <meta property="og:title" content="Shot Caddie – Automated Shot & Cocktail Dispenser (AI-Enabled)" />
+  <meta property="og:description" content="A smart countertop dispenser that measures and pours drinks from up to 16 bottles. AI-enabled recipe suggestions and easy bottle swaps. Coming Q2 2026." />
+  <meta property="og:url" content="https://shotcaddie.net/" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      min-height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      background: #0a0a0a;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    /* Background image */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('ChatGPT Image Dec 23, 2025, 11_56_40 AM.png') no-repeat center top;
+      background-size: contain;
+      z-index: -3;
+      filter: brightness(0.55);
+    }
+
+    /* Moving liquid overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(45deg, rgba(0,255,190,0.10), rgba(0,150,255,0.10), rgba(255,100,200,0.10), rgba(0,255,190,0.10));
+      background-size: 400% 400%;
+      z-index: -2;
+      animation: moveLiquid 15s ease infinite;
+    }
+
+    @keyframes moveLiquid {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Central liquid flow effect */
+    .liquid-flow {
+      position: fixed;
+      top: 200px;
+      left: 50%;
+      width: 20px;
+      height: 200px;
+      margin-left: -10px;
+      background: radial-gradient(circle, rgba(0,255,190,0.7) 0%, rgba(0,255,190,0.1) 80%);
+      border-radius: 50%;
+      z-index: -1;
+      animation: flowMove 2s infinite alternate, flowPulse 1.5s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes flowMove {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(15px); }
+    }
+
+    @keyframes flowPulse {
+      0% { opacity: 0.65; }
+      50% { opacity: 1; }
+      100% { opacity: 0.65; }
+    }
+
+    /* Layout */
+    .wrap {
+      width: 100%;
+      max-width: 980px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-bottom: 40px;
+    }
+
+    header {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+      text-shadow: 0 0 20px #00ffe0, 0 0 40px #00ffe0;
+      animation: glow 2s ease-in-out infinite alternate;
+      line-height: 1.1;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0; }
+      to   { text-shadow: 0 0 30px #00ffe0, 0 0 60px #00ffe0; }
+    }
+
+    .subhead {
+      font-size: 1.2em;
+      opacity: 0.95;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+      margin-top: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 8px 12px;
+      border: 1px solid rgba(0,255,224,0.35);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      font-weight: bold;
+      letter-spacing: 0.3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    nav a {
+      color: #00ffe0;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    nav a:hover { border-bottom-color: #00ffe0; }
+
+    .card {
+      width: 100%;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    h2 {
+      font-size: 1.6em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(0,255,224,0.35);
+    }
+
+    p {
+      line-height: 1.55;
+      opacity: 0.95;
+      text-shadow: 0 0 5px rgba(0,0,0,0.75);
+      margin-bottom: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .feature {
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px;
+      padding: 14px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .feature h3 {
+      font-size: 1.05em;
+      margin-bottom: 6px;
+      color: #00ffe0;
+    }
+
+    ul {
+      margin-left: 18px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 520px;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      background-color: #00ffae;
+      color: #000;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      width: 100%;
+    }
+
+    button:hover { transform: translateY(-1px); background-color: #00dd95; }
+
+    .fineprint {
+      font-size: 0.95em;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    footer {
+      text-align: center;
+      opacity: 0.85;
+      font-size: 0.95em;
+      margin-top: 10px;
+    }
+
+    .pillrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      border: 1px solid rgba(0,255,224,0.25);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.35);
+      font-weight: bold;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .cta { grid-template-columns: 1fr; }
+      h1 { font-size: 2.2em; }
+    }
+  </style>
+
+  <!-- Structured data: Product + Organization + FAQ (lightweight) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Shot Caddie",
+        "url": "https://shotcaddie.net"
+      },
+      {
+        "@type": "Product",
+        "name": "Shot Caddie",
+        "description": "A smart, automated countertop shot and cocktail dispenser designed to measure and pour drinks from up to 16 spirits and mixers with recipe matching and AI-enabled suggestions.",
+        "brand": { "@type": "Brand", "name": "Shot Caddie" },
+        "url": "https://shotcaddie.net",
+        "category": "Kitchen appliance",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Home bars, events, and entertainment spaces"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Shot Caddie?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shot Caddie is an automated shot and cocktail dispenser that measures and pours drinks from user-loaded spirits and mixers. It helps you discover what you can make based on what you have loaded and pour consistent drinks quickly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many bottles can Shot Caddie hold?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shot Caddie is designed around a 16-bottle system so you can load your favorite spirits and mixers and unlock a wide range of recipes and combinations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When is Shot Caddie launching?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Shot Caddie is targeting a Q2 2026 release. Join the early access list for updates."
+            }
+          }
+        ]
+      }
+    ]
   }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
-    position: relative;
-  }
-
-  /* Background image */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: url('ChatGPT Image Dec 23, 2025, 11_56_40 AM.png') no-repeat center top;
-    background-size: contain;
-    z-index: -3;
-    filter: brightness(0.6);
-  }
-
-  /* Moving liquid overlay using animated gradient */
-  body::after {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(45deg, rgba(0,255,190,0.1), rgba(0,150,255,0.1), rgba(255,100,200,0.1), rgba(0,255,190,0.1));
-    background-size: 400% 400%;
-    z-index: -2;
-    animation: moveLiquid 15s ease infinite;
-  }
-
-  @keyframes moveLiquid {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Central liquid flow effect */
-  .liquid-flow {
-    position: fixed;
-    top: 200px; /* adjust to where the spout is in your image */
-    left: 50%;
-    width: 20px;
-    height: 200px;
-    margin-left: -10px; /* center */
-    background: radial-gradient(circle, rgba(0,255,190,0.7) 0%, rgba(0,255,190,0.1) 80%);
-    border-radius: 50%;
-    z-index: -1;
-    animation: flowMove 2s infinite alternate, flowPulse 1.5s infinite ease-in-out;
-  }
-
-  @keyframes flowMove {
-    0% { transform: translateY(0px); }
-    100% { transform: translateY(15px); }
-  }
-
-  @keyframes flowPulse {
-    0% { opacity: 0.7; }
-    50% { opacity: 1; }
-    100% { opacity: 0.7; }
-  }
-
-  h1 {
-    font-size: 3em;
-    margin-top: 40px;
-    margin-bottom: 0.2em;
-    text-shadow: 0 0 20px #00ffe0, 0 0 40px #00ffe0;
-    animation: glow 2s ease-in-out infinite alternate;
-    text-align: center;
-  }
-
-  @keyframes glow {
-    from { text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0; }
-    to   { text-shadow: 0 0 30px #00ffe0, 0 0 60px #00ffe0; }
-  }
-
-  h2 {
-    font-size: 2em;
-    margin-bottom: 1em;
-    text-shadow: 0 0 10px #00ffe0;
-    text-align: center;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 1.5em;
-    opacity: 0;
-    animation: fadeIn 2s forwards 1s;
-    width: 100%;
-    max-width: 400px;
-  }
-
-  input[type="email"] {
-    padding: 12px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: none;
-    width: 100%;
-  }
-
-  button {
-    padding: 12px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    background-color: #00ffae;
-    color: #000;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    width: 100%;
-  }
-
-  button:hover { background-color: #00dd95; }
-
-  p {
-    margin-top: 1.5em;
-    font-size: 1em;
-    text-shadow: 0 0 5px #000;
-    text-align: center;
-  }
-
-  @keyframes fadeIn { to { opacity: 1; } }
-
-  @media (max-width: 600px) {
-    h1 { font-size: 2em; margin-top: 20px; }
-    h2 { font-size: 1.5em; }
-  }
-
-</style>
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Shot Caddie",
-  "description": "Automated cocktail and shot dispensing system",
-  "brand": {
-    "@type": "Brand",
-    "name": "Shot Caddie"
-  },
-  "url": "https://shotcaddie.net"
-}
-</script>
+  </script>
 </head>
+
 <body>
-<h1>Shot Caddie – Smart Automated Shot & Cocktail Dispenser</h1>
+  <div class="liquid-flow" aria-hidden="true"></div>
 
- <h2>Perfect pours every time</h2>
-<h2>Automated spirits and mixers</h2>
-<h2>Designed for home bars and events</h2>
- 
-<h2>Coming in 2<sup>nd</sup> Quarter of 2026</h2>
+  <div class="wrap">
+    <header>
+      <h1>Shot Caddie</h1>
+      <p class="subhead">
+        A smart, automated shot & cocktail dispenser designed to pour consistent drinks fast — from the spirits and mixers you load.
+      </p>
 
-<form action="https://formspree.io/f/xqezneng" method="POST">
- <input type="hidden" name="_redirect" value="https://shotcaddie.net/thanks.html">
-  <input type="email" name="email" placeholder="Enter your email" required>
-  <button type="submit">Notify Me</button>
-</form>
+      <div class="badge">Coming Q2 2026 • Early Access List Open</div>
 
-<p>Join our early access list to get updates!</p>
+      <nav aria-label="Primary">
+        <a href="/how-it-works.html">How it works</a>
+        <a href="/faq.html">FAQ</a>
+      </nav>
+    </header>
 
-<!-- Liquid flow element -->
-<div class="liquid-flow"></div>
+    <section class="card" id="what">
+      <h2>What Shot Caddie is</h2>
+      <p>
+        Shot Caddie is a countertop drink system that helps you <strong>stock up to 16 different spirits and mixers</strong>, then
+        <strong>automatically measures and pours</strong> shots and cocktails with repeatable timing and calibration.
+      </p>
+      <p>
+        It’s built for people who want a clean setup for entertaining: less mess, fewer measuring cups, and an easy way to see
+        what you can make with what’s loaded.
+      </p>
 
+      <div class="pillrow" aria-label="Highlights">
+        <div class="pill">Up to 16 bottles</div>
+        <div class="pill">Automated measured pours</div>
+        <div class="pill">Recipe matching</div>
+        <div class="pill">AI-enabled suggestions</div>
+        <div class="pill">Easy bottle swaps</div>
+      </div>
+    </section>
+
+    <section class="card" id="features">
+      <h2>Key features</h2>
+      <div class="grid">
+        <div class="feature">
+          <h3>Stock what you like</h3>
+          <p>Load your preferred spirits, liqueurs, juices, or mixers and label each position so the system knows what’s available.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Make what you can</h3>
+          <p>Shot Caddie can present recipes that match your loaded bottles — including flexible substitutions when it makes sense.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Consistent pours</h3>
+          <p>Calibration-focused design so pours are repeatable and you can tune for different liquids (spirits vs. juices, etc.).</p>
+        </div>
+
+        <div class="feature">
+          <h3>AI-enabled mixologist</h3>
+          <p>Optional AI assistance to suggest shots/cocktails you can make, recommend swaps, and help you discover new combinations.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Fast entertaining</h3>
+          <p>Queue multiple pours and keep the night moving — great for home bars, game rooms, and hosting.</p>
+        </div>
+
+        <div class="feature">
+          <h3>Built to evolve</h3>
+          <p>Designed as a modern hardware + software platform with a web-based interface for setup, recipes, and calibration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="why">
+      <h2>Why people want this</h2>
+      <ul>
+        <li><strong>Less mess:</strong> no sticky measuring tools, fewer spills.</li>
+        <li><strong>Less thinking:</strong> the system shows what you can make based on your loaded bottles.</li>
+        <li><strong>Better consistency:</strong> repeatable pours after calibration.</li>
+        <li><strong>More fun:</strong> quick shots, creative mixes, and AI-assisted discovery (optional).</li>
+      </ul>
+      <p class="fineprint">
+        Note: Always drink responsibly. Shot Caddie is designed for adult beverage dispensing and is not a medical or safety device.
+      </p>
+    </section>
+
+    <section class="card" id="signup">
+      <h2>Get launch updates</h2>
+
+      <div class="cta">
+        <div>
+          <p>
+            Join the early access list for development updates, launch timing, and first access when ordering opens.
+          </p>
+
+          <form action="https://formspree.io/f/xqezneng" method="POST">
+            <input type="hidden" name="_redirect" value="https://shotcaddie.net/thanks.html" />
+            <label for="email" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Email</label>
+            <input id="email" type="email" name="email" placeholder="Enter your email" required />
+            <button type="submit">Notify Me</button>
+          </form>
+
+          <p class="fineprint">No spam — only Shot Caddie updates.</p>
+        </div>
+
+        <div>
+          <p><strong>Learn more:</strong></p>
+          <ul>
+            <li><a href="/how-it-works.html" style="color:#00ffe0;">How it works</a></li>
+            <li><a href="/faq.html" style="color:#00ffe0;">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Shot Caddie</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
