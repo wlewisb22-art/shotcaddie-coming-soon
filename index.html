@@ -2,26 +2,26 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B96M2PZL1W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-B96M2PZL1W"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-B96M2PZL1W');
+  </script>
 
-  gtag('config', 'G-B96M2PZL1W');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Shot Caddie – Automated Shot & Cocktail Dispenser (AI-Enabled)</title>
-  <meta name="description" content="Shot Caddie is a smart, automated shot and cocktail dispenser that measures and pours drinks from up to 16 spirits and mixers. AI-enabled recipe suggestions, fast pours, and easy bottle swaps. Coming Q2 2026." />
+  <title>Shot Caddie – 2.0 (Automatic) + Shot Caddie Original (Manual)</title>
+  <meta name="description" content="Shot Caddie 2.0 is an AI-enabled automatic shot & cocktail dispenser (targeting Q2 2026). Shot Caddie Original is a manual system for custom spirits/mixers with pump-based recipes and an engraved menu (coming soon)." />
 
   <!-- Canonical -->
   <link rel="canonical" href="https://shotcaddie.net/" />
 
   <!-- Open Graph (for sharing) -->
-  <meta property="og:title" content="Shot Caddie – Automated Shot & Cocktail Dispenser (AI-Enabled)" />
-  <meta property="og:description" content="A smart countertop dispenser that measures and pours drinks from up to 16 bottles. AI-enabled recipe suggestions and easy bottle swaps. Coming Q2 2026." />
+  <meta property="og:title" content="Shot Caddie – 2.0 (Automatic) + Original (Manual)" />
+  <meta property="og:description" content="Shot Caddie 2.0 is coming Q2 2026. Shot Caddie Original (manual) is coming soon with pump-based recipes, vacuum bottles, and an engraved menu." />
   <meta property="og:url" content="https://shotcaddie.net/" />
   <meta property="og:type" content="website" />
 
@@ -147,6 +147,19 @@
       letter-spacing: 0.3px;
     }
 
+    .badge-preorder {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(0,255,174,0.55);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.42);
+      backdrop-filter: blur(6px);
+      font-weight: bold;
+      letter-spacing: 0.3px;
+      color: #00ffae;
+    }
+
     nav {
       display: flex;
       gap: 12px;
@@ -175,6 +188,11 @@
       backdrop-filter: blur(8px);
     }
 
+    .card-preorder {
+      border: 1px solid rgba(0,255,174,0.35);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35), 0 0 28px rgba(0,255,174,0.10);
+    }
+
     h2 {
       font-size: 1.6em;
       margin-bottom: 10px;
@@ -188,25 +206,6 @@
       margin-bottom: 10px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .feature {
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 12px;
-      padding: 14px;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .feature h3 {
-      font-size: 1.05em;
-      margin-bottom: 6px;
-      color: #00ffe0;
-    }
-
     ul {
       margin-left: 18px;
       line-height: 1.6;
@@ -218,6 +217,35 @@
       grid-template-columns: 1.2fr 0.8fr;
       gap: 14px;
       align-items: center;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .pillrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .pill {
+      border: 1px solid rgba(0,255,224,0.25);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.35);
+      font-weight: bold;
+      font-size: 0.95em;
+    }
+
+    .fineprint {
+      font-size: 0.95em;
+      opacity: 0.85;
+      margin-top: 6px;
     }
 
     form {
@@ -251,11 +279,93 @@
 
     button:hover { transform: translateY(-1px); background-color: #00dd95; }
 
-    .fineprint {
-      font-size: 0.95em;
-      opacity: 0.85;
-      margin-top: 6px;
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      background-color: #00ffae;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      width: 100%;
+      border: none;
     }
+
+    .btn-secondary {
+      background: rgba(0,0,0,0.0);
+      border: 1px solid rgba(0,255,224,0.35);
+      color: #00ffe0;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0,0,0,0.20);
+      border-color: rgba(0,255,224,0.65);
+      transform: translateY(-1px);
+    }
+
+    /* Disabled "coming soon" button */
+    .btn-disabled {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.65);
+      cursor: not-allowed;
+      pointer-events: none;
+      text-shadow: none;
+    }
+
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .config {
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px;
+      padding: 14px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .config h4 {
+      margin-bottom: 6px;
+      color: #00ffe0;
+      font-size: 1.05em;
+    }
+
+    .callout {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,255,174,0.35);
+      background: rgba(0,0,0,0.35);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .photo {
+      border: 1px dashed rgba(255,255,255,0.22);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      padding: 14px;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .photo strong { color: #00ffe0; }
+    .photo small { opacity: 0.8; line-height: 1.4; }
 
     footer {
       text-align: center;
@@ -264,81 +374,14 @@
       margin-top: 10px;
     }
 
-    .pillrow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .pill {
-      border: 1px solid rgba(0,255,224,0.25);
-      border-radius: 999px;
-      padding: 8px 12px;
-      background: rgba(0,0,0,0.35);
-      font-weight: bold;
-      font-size: 0.95em;
-    }
-
     @media (max-width: 900px) {
-      .grid { grid-template-columns: 1fr; }
       .cta { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .config-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr; }
       h1 { font-size: 2.2em; }
     }
   </style>
-
-  <!-- Structured data: Product + Organization + FAQ (lightweight) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "Shot Caddie",
-        "url": "https://shotcaddie.net"
-      },
-     {
-      "@type": "WebSite",
-      "name": "Shot Caddie",
-      "url": "https://shotcaddie.net",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://shotcaddie.net/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is Shot Caddie?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Shot Caddie is an automated shot and cocktail dispenser that measures and pours drinks from user-loaded spirits and mixers. It helps you discover what you can make based on what you have loaded and pour consistent drinks quickly."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many bottles can Shot Caddie hold?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Shot Caddie is designed around a 16-bottle system so you can load your favorite spirits and mixers and unlock a wide range of recipes and combinations."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "When is Shot Caddie launching?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Shot Caddie is targeting a Q2 2026 release. Join the early access list for updates."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
 </head>
 
 <body>
@@ -348,22 +391,175 @@
     <header>
       <h1>Shot Caddie</h1>
       <p class="subhead">
-        A smart, automated shot & cocktail dispenser designed to pour consistent drinks fast — from the spirits and mixers you load.
+        Two versions. One mission: make serving shots and mixed drinks faster, cleaner, and easier.
       </p>
 
-      <div class="badge">Coming Q2 2026 • Early Access List Open</div>
+      <div class="badge">Shot Caddie 2.0 (Automatic) • Coming Q2 2026</div>
+      <div class="badge-preorder">Shot Caddie Original (Manual) • Coming soon</div>
 
       <nav aria-label="Primary">
+        <a href="#original">Original (Manual)</a>
+        <a href="#two">2.0 Overview</a>
         <a href="/how-it-works.html">How it works</a>
         <a href="/faq.html">FAQ</a>
+        <a href="#signup">Updates</a>
       </nav>
     </header>
 
-    <section class="card" id="what">
-      <h2>What Shot Caddie is</h2>
+    <!-- ORIGINAL -->
+    <section class="card card-preorder" id="original">
+      <h2>Shot Caddie Original (Manual) — Coming soon</h2>
+
+      <div class="two-col">
+        <div>
+          <p>
+            Shot Caddie Original is the “good time” manual system: you <strong>choose your custom alcohols and mixers</strong>,
+            load them into the bottles, and follow a simple <strong>pump-count menu</strong> so anyone can make consistent drinks.
+          </p>
+
+          <div class="pillrow" aria-label="Original highlights">
+            <div class="pill">270mm × 270mm (≈ 10.6″ × 10.6″)</div>
+            <div class="pill">Lazy Susan base</div>
+            <div class="pill">Pump-count recipes</div>
+            <div class="pill">Vacuum insulated bottles</div>
+            <div class="pill">Engraved menu board</div>
+          </div>
+
+          <p class="fineprint">
+            Pump volume is approximate and can vary depending on the liquid and how the pump is pressed.
+          </p>
+        </div>
+
+        <div>
+          <p><strong>Preorder</strong></p>
+          <span class="btn btn-disabled">Preorder Coming Soon</span>
+
+          <p class="fineprint" style="margin-top:10px;">
+            Want to be first when ordering opens? Join the list below.
+          </p>
+          <a class="btn btn-secondary" href="#signup">Get Updates</a>
+        </div>
+      </div>
+
+      <h3 style="margin-top:14px; color:#00ffe0; font-size:1.1em;">Choose your configuration</h3>
+
+      <div class="config-grid" aria-label="Choose your configuration">
+        <div class="config">
+          <h4>Mixer Unit</h4>
+          <p style="margin-bottom:8px;">
+            <strong>8 pump mixers</strong> + <strong>9th center hole</strong> for a top-off pour bottle (Sprite/Coke/Cranberry)
+            or an extra mixer.
+          </p>
+          <ul>
+            <li>Great for building mixed shots fast</li>
+            <li>Top off mixed drinks without a pump</li>
+          </ul>
+        </div>
+
+        <div class="config">
+          <h4>Liquor Unit</h4>
+          <p style="margin-bottom:8px;">
+            <strong>8 pump liquors</strong> + a <strong>center holder</strong> for the included shaker to mix drinks in.
+          </p>
+          <ul>
+            <li>Fast access to your core spirits</li>
+            <li>Center shaker keeps the workflow clean</li>
+          </ul>
+        </div>
+
+        <div class="config">
+          <h4>Custom Menu Option</h4>
+          <p style="margin-bottom:8px;">
+            Want your own lineup? Choose <strong>custom bottle labels</strong> and a <strong>custom engraved menu</strong>.
+          </p>
+          <ul>
+            <li>We engrave your bottle names on the sides</li>
+            <li>We engrave your recipe list as pump-counts</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout" role="note" aria-label="Most people get two">
+        <p style="margin:0;">
+          <strong>Most people get two.</strong> The common setup is <strong>one Mixer Unit + one Liquor Unit</strong> —
+          so everything is organized and mixed drinks are quick and easy.
+        </p>
+      </div>
+
+      <h3 style="margin-top:14px; color:#00ffe0; font-size:1.1em;">Standard menu vs Custom menu (boilerplate)</h3>
+      <ul>
+        <li>
+          <strong>Standard Menu:</strong> Choose a standard “mixers + liquors” lineup that matches our included recipe board.
+          Bottles and labels are engraved to match the standard menu selections.
+        </li>
+        <li>
+          <strong>Custom Menu:</strong> Provide your own bottle names (mixers/liquors) and your recipe list.
+          We engrave a custom wood menu board and matching bottle labels.
+        </li>
+      </ul>
+      <p class="fineprint">
+        We’ll add a simple “menu builder” workflow later (upload a list, approve a proof, then we engrave and ship).
+      </p>
+
+      <h3 style="margin-top:14px; color:#00ffe0; font-size:1.1em;">How the menu works</h3>
       <p>
-        Shot Caddie is a countertop drink system that helps you <strong>stock up to 16 different spirits and mixers</strong>, then
-        <strong>automatically measures and pours</strong> shots and cocktails with repeatable timing and calibration.
+        The included wood menu lists each drink as pump counts (example: “2 pumps Mixer A + 1 pump Mixer B + 1 pump Liquor C”).
+        To make multiple shots at once, simply <strong>multiply the pump counts</strong> by the number of shots you want.
+      </p>
+
+      <h3 style="margin-top:14px; color:#00ffe0; font-size:1.1em;">What’s in the box</h3>
+      <ul>
+        <li><strong>Shot Caddie Original base</strong> (manual) on a <strong>Lazy Susan</strong> for easy access to all bottles</li>
+        <li>
+          <strong>Either:</strong> (A) <strong>8 or 9</strong> vacuum-insulated <strong>500ml stainless steel bottles</strong>,
+          <strong>or</strong> (B) <strong>8</strong> vacuum-insulated <strong>500ml bottles</strong> + a <strong>shaker</strong> to mix drinks in
+        </li>
+        <li><strong>8 pumps</strong> (approximately <strong>14oz</strong> each) + <strong>storage caps</strong> for all bottles</li>
+        <li><strong>Engraved wood menu</strong> with instructions and multiple shot/drink menu items</li>
+      </ul>
+
+      <h3 style="margin-top:14px; color:#00ffe0; font-size:1.1em;">Who it’s for</h3>
+      <ul>
+        <li><strong>Parties</strong> and get-togethers</li>
+        <li><strong>Home bars</strong> and game rooms</li>
+        <li><strong>Tailgating</strong> and outdoor hangouts</li>
+        <li>Anywhere a <strong>good time</strong> is wanted</li>
+      </ul>
+
+      <h3 style="margin-top:14px; color:#00ffe0; font-size:1.1em;">Customization (early editions)</h3>
+      <ul>
+        <li><strong>Laser-cut plywood</strong> base with optional <strong>laser-engraved bottle names</strong></li>
+        <li><strong>Standard menus</strong> for common mixers and liquors</li>
+        <li><strong>Custom menu option:</strong> provide your recipe list and we engrave a custom wood menu</li>
+      </ul>
+
+      <h3 style="margin-top:14px; color:#00ffe0; font-size:1.1em;">Photos (coming soon)</h3>
+      <div class="photo-grid" aria-label="Photo placeholders">
+        <div class="photo">
+          <strong>Original — Mixer Unit</strong>
+          <small>8 pump mixers + center pour bottle (Sprite/Coke/Cranberry)</small>
+        </div>
+        <div class="photo">
+          <strong>Original — Liquor Unit</strong>
+          <small>8 pump liquors + center shaker holder (included shaker)</small>
+        </div>
+        <div class="photo">
+          <strong>Engraved Menu Board</strong>
+          <small>Wood menu showing pump-count recipes + scaling instructions</small>
+        </div>
+      </div>
+
+      <p class="fineprint">
+        Note: Always drink responsibly. Shot Caddie is designed for adult beverage dispensing and is not a medical or safety device.
+      </p>
+    </section>
+
+    <!-- 2.0 -->
+    <section class="card" id="two">
+      <h2>Shot Caddie 2.0 (Automatic) — Coming Q2 2026</h2>
+      <p>
+        Shot Caddie 2.0 is the automated version: stock spirits and mixers, then the system
+        <strong>measures and pours</strong> shots and cocktails with repeatable calibration and an optional AI-enabled recipe assistant.
       </p>
       <p>
         It’s built for people who want a clean setup for entertaining: less mess, fewer measuring cups, and an easy way to see
@@ -379,61 +575,14 @@
       </div>
     </section>
 
-    <section class="card" id="features">
-      <h2>Key features</h2>
-      <div class="grid">
-        <div class="feature">
-          <h3>Stock what you like</h3>
-          <p>Load your preferred spirits, liqueurs, juices, or mixers and label each position so the system knows what’s available.</p>
-        </div>
-
-        <div class="feature">
-          <h3>Make what you can</h3>
-          <p>Shot Caddie can present recipes that match your loaded bottles — including flexible substitutions when it makes sense.</p>
-        </div>
-
-        <div class="feature">
-          <h3>Consistent pours</h3>
-          <p>Calibration-focused design so pours are repeatable and you can tune for different liquids (spirits vs. juices, etc.).</p>
-        </div>
-
-        <div class="feature">
-          <h3>AI-enabled mixologist</h3>
-          <p>Optional AI assistance to suggest shots/cocktails you can make, recommend swaps, and help you discover new combinations.</p>
-        </div>
-
-        <div class="feature">
-          <h3>Fast entertaining</h3>
-          <p>Queue multiple pours and keep the night moving — great for home bars, game rooms, and hosting.</p>
-        </div>
-
-        <div class="feature">
-          <h3>Built to evolve</h3>
-          <p>Designed as a modern hardware + software platform with a web-based interface for setup, recipes, and calibration.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="why">
-      <h2>Why people want this</h2>
-      <ul>
-        <li><strong>Less mess:</strong> no sticky measuring tools, fewer spills.</li>
-        <li><strong>Less thinking:</strong> the system shows what you can make based on your loaded bottles.</li>
-        <li><strong>Better consistency:</strong> repeatable pours after calibration.</li>
-        <li><strong>More fun:</strong> quick shots, creative mixes, and AI-assisted discovery (optional).</li>
-      </ul>
-      <p class="fineprint">
-        Note: Always drink responsibly. Shot Caddie is designed for adult beverage dispensing and is not a medical or safety device.
-      </p>
-    </section>
-
+    <!-- Updates -->
     <section class="card" id="signup">
-      <h2>Get launch updates</h2>
+      <h2>Get updates (Original + 2.0)</h2>
 
       <div class="cta">
         <div>
           <p>
-            Join the early access list for development updates, launch timing, and first access when ordering opens.
+            Join the list for launch timing, photos, preorder announcements, and product updates.
           </p>
 
           <form action="https://formspree.io/f/xqezneng" method="POST">
