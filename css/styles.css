@@ -1,0 +1,212 @@
+/* ============================================================
+   SHOT CADDIE — clubhouse scorecard design system
+   Palette: Fairway green / Scorecard cream / Brass / Pin-flag red
+   Type:    Young Serif (display) · Archivo (body & UI) · Great Vibes (script)
+   ============================================================ */
+
+:root {
+  --fairway: #123b2a;
+  --fairway-deep: #0c2b1f;
+  --scorecard: #f6f0e1;
+  --paper-edge: #e3d8bd;
+  --tee: #fcfaf3;
+  --ink: #1e241f;
+  --ink-soft: #4a5249;
+  --brass: #b08a3c;
+  --brass-soft: #caa75c;
+  --pin: #c13a2b;
+  --pin-dark: #a02d20;
+  --radius: 8px;
+  --wrap: 1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--scorecard);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--pin); }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 2px;
+}
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+
+/* ---------- type ---------- */
+h1, h2, h3 { font-family: "Young Serif", Georgia, serif; font-weight: 400; line-height: 1.15; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+h3 { font-size: 1.35rem; }
+p  { margin: 0 0 1em; }
+.eyebrow {
+  font-family: "Archivo", sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brass); margin: 0 0 0.75rem;
+}
+.script {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--brass-soft); line-height: 1.2;
+}
+.lede { font-size: 1.2rem; color: var(--ink-soft); max-width: 46ch; }
+.band .lede { color: #d8d2c0; }
+
+/* ---------- bands & sheets ---------- */
+.band  { background: var(--fairway); color: var(--tee); padding: 72px 0; }
+.band h1, .band h2, .band h3 { color: var(--tee); }
+.sheet { background: var(--scorecard); padding: 72px 0; }
+.sheet--tee { background: var(--tee); }
+.rule-top { border-top: 1px solid var(--paper-edge); }
+
+/* ---------- nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--fairway-deep);
+  border-bottom: 1px solid rgba(202, 167, 92, 0.35);
+}
+.nav-inner { display: flex; align-items: center; gap: 20px; padding: 14px 24px; max-width: var(--wrap); margin: 0 auto; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--tee); text-decoration: none; font-family: "Young Serif", serif; font-size: 1.25rem; }
+.brand svg { width: 30px; height: 36px; flex: none; }
+.brand .tm { font-family: "Archivo", sans-serif; font-size: 0.6rem; vertical-align: super; color: var(--brass-soft); }
+.nav-links { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav-links a {
+  color: #e8e2d0; text-decoration: none; font-size: 0.92rem; font-weight: 600;
+  padding: 8px 12px; border-radius: 6px;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.08); color: var(--tee); }
+.nav-links a[aria-current="page"] { color: var(--brass-soft); }
+.nav-toggle {
+  display: none; margin-left: auto;
+  background: none; border: 1.5px solid var(--brass-soft); color: var(--brass-soft);
+  border-radius: 6px; padding: 6px 12px; font: 600 0.9rem "Archivo", sans-serif; cursor: pointer;
+}
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; flex-basis: 100%; flex-direction: column; }
+  .nav-links.open { display: flex; }
+}
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; padding: 96px 0 110px; }
+.hero .wrap { position: relative; z-index: 2; }
+.hero-arc { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.hero-arc path { fill: none; stroke: var(--brass-soft); stroke-width: 2.5; stroke-dasharray: 2 10; stroke-linecap: round; opacity: 0.55; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-arc .flight { stroke-dashoffset: 900; animation: flight 2.4s ease-out 0.3s forwards; stroke-dasharray: 900; }
+  @keyframes flight { to { stroke-dashoffset: 0; } }
+}
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+
+/* ---------- buttons & pills ---------- */
+.btn {
+  display: inline-block; background: var(--pin); color: var(--tee);
+  font: 700 0.92rem/1 "Archivo", sans-serif; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 15px 26px; border-radius: var(--radius); text-decoration: none; border: none; cursor: pointer;
+}
+.btn:hover { background: var(--pin-dark); }
+.btn-ghost {
+  display: inline-block; background: transparent; color: var(--brass-soft);
+  font: 700 0.92rem/1 "Archivo", sans-serif; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 14px 24px; border-radius: var(--radius); text-decoration: none; border: 1.5px solid var(--brass-soft);
+}
+.btn-ghost:hover { color: var(--tee); border-color: var(--tee); }
+.sheet .btn-ghost { color: var(--fairway); border-color: var(--fairway); }
+.sheet .btn-ghost:hover { color: var(--pin); border-color: var(--pin); }
+.pill {
+  display: inline-block; font: 700 0.75rem/1 "Archivo", sans-serif;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--brass); border: 1.5px solid var(--brass);
+  border-radius: 999px; padding: 7px 14px; margin-bottom: 18px;
+}
+.band .pill { color: var(--brass-soft); border-color: var(--brass-soft); }
+
+/* ---------- lineup cards ---------- */
+.lineup { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 40px; }
+@media (max-width: 940px) { .lineup { grid-template-columns: 1fr; } }
+.card {
+  background: var(--tee); border: 1px solid var(--paper-edge); border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.card img { aspect-ratio: 4 / 3.4; object-fit: cover; object-position: top; }
+.card-body { padding: 22px 22px 26px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card-body p { color: var(--ink-soft); margin: 0; }
+.card-link { margin-top: auto; padding-top: 14px; font-weight: 700; text-decoration: none; }
+.card-link:hover { text-decoration: underline; }
+
+/* ---------- feature plaques ---------- */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 26px 34px; padding: 0; margin: 36px 0 0; list-style: none; }
+.features li { border-top: 3px solid var(--brass); padding-top: 14px; }
+.features h4 { margin: 0 0 6px; font: 700 1rem "Archivo", sans-serif; letter-spacing: 0.02em; }
+.features p { margin: 0; color: var(--ink-soft); font-size: 0.98rem; }
+.band .features p { color: #d8d2c0; }
+
+/* ---------- scorecard tables (signature) ---------- */
+.scorecard { background: var(--tee); border: 2px solid var(--ink); border-radius: 4px; margin: 36px 0 8px; overflow: hidden; }
+.scorecard-head {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  background: var(--fairway); color: var(--tee); padding: 12px 18px;
+  font: 700 0.8rem "Archivo", sans-serif; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.scorecard-head .hole { color: var(--brass-soft); }
+.scorecard table { width: 100%; border-collapse: collapse; }
+.scorecard th, .scorecard td { text-align: left; padding: 12px 18px; border-top: 1px solid var(--paper-edge); vertical-align: top; }
+.scorecard th { width: 34%; font: 700 0.85rem "Archivo", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+.scorecard tr.flag th { border-left: 4px solid var(--pin); }
+.scorecard tfoot td { font-size: 0.9rem; color: var(--ink-soft); background: var(--scorecard); }
+
+/* ---------- media rows ---------- */
+.split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.frame { border: 1px solid var(--paper-edge); border-radius: var(--radius); overflow: hidden; background: var(--tee); }
+.band .frame { border-color: rgba(202,167,92,0.4); }
+
+/* ---------- steps (how it works) ---------- */
+.steps { counter-reset: step; padding: 0; margin: 28px 0 0; list-style: none; max-width: 62ch; }
+.steps li { counter-increment: step; position: relative; padding: 0 0 22px 58px; }
+.steps li::before {
+  content: counter(step);
+  position: absolute; left: 0; top: 0;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--fairway); color: var(--brass-soft);
+  font: 700 1rem/38px "Archivo", sans-serif; text-align: center;
+}
+.steps h4 { margin: 0 0 4px; font: 700 1.02rem "Archivo", sans-serif; }
+.steps p { margin: 0; color: var(--ink-soft); }
+
+/* ---------- menu chips ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 18px 0 0; list-style: none; }
+.chips li {
+  background: var(--tee); border: 1px solid var(--paper-edge); border-radius: 999px;
+  padding: 8px 16px; font-size: 0.92rem; font-weight: 600;
+}
+
+/* ---------- signup ---------- */
+.signup { background: var(--tee); border: 2px solid var(--ink); border-radius: var(--radius); padding: 34px; max-width: 640px; }
+.signup form { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.signup input[type="email"] {
+  flex: 1 1 240px; padding: 14px 16px; font: 500 1rem "Archivo", sans-serif;
+  border: 1.5px solid var(--ink-soft); border-radius: var(--radius); background: var(--scorecard);
+}
+.signup small { display: block; margin-top: 12px; color: var(--ink-soft); }
+
+/* ---------- footer ---------- */
+.footer { background: var(--fairway-deep); color: #cfc9b6; padding: 48px 0 40px; font-size: 0.92rem; }
+.footer .brand { margin-bottom: 14px; }
+.footer p { max-width: 70ch; }
+.footer .fineprint { color: #9aa392; font-size: 0.85rem; }
+.footer a { color: var(--brass-soft); }
+
+/* ---------- utilities ---------- */
+.mt-0 { margin-top: 0; }
+.center { text-align: center; }
+.stack > * + * { margin-top: 14px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 20px; font: 700 0.8rem "Archivo", sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.band .badge-row { color: #d8d2c0; }

@@ -1,130 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B96M2PZL1W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-B96M2PZL1W');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Shot Caddie FAQ – Automated Shot & Cocktail Dispenser</title>
-  <meta name="description" content="Frequently asked questions about Shot Caddie: bottle capacity, recipes, AI-enabled mixologist features, calibration, launch timing, and more." />
-
-  <link rel="canonical" href="https://shotcaddie.net/faq.html" />
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background:#0a0a0a; color:#fff; padding:20px; }
-    .wrap { max-width: 980px; margin: 0 auto; display:flex; flex-direction:column; gap:14px; }
-    a { color:#00ffe0; text-decoration:none; font-weight:bold; }
-    a:hover { text-decoration:underline; }
-    .card { background: rgba(0,0,0,0.6); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:18px; }
-    h1 { font-size:2.0em; text-shadow: 0 0 18px rgba(0,255,224,0.25); }
-    h2 { margin-top: 10px; margin-bottom: 8px; font-size: 1.2em; color:#00ffe0; }
-    p { line-height:1.6; opacity:0.95; }
-    nav { display:flex; gap:12px; flex-wrap:wrap; margin-bottom: 6px; }
-    footer { text-align:center; opacity:0.85; margin-top: 8px; }
-  </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {
-        "@type":"Question",
-        "name":"What is Shot Caddie?",
-        "acceptedAnswer":{"@type":"Answer","text":"Shot Caddie is a smart, automated shot and cocktail dispenser designed to measure and pour drinks from the spirits and mixers you load."}
-      },
-      {
-        "@type":"Question",
-        "name":"How many bottles can Shot Caddie hold?",
-        "acceptedAnswer":{"@type":"Answer","text":"Shot Caddie is designed around a 16-bottle system so you can stock a wide variety of spirits, liqueurs, juices, and mixers."}
-      },
-      {
-        "@type":"Question",
-        "name":"Does Shot Caddie have AI features?",
-        "acceptedAnswer":{"@type":"Answer","text":"Shot Caddie is designed to support optional AI-enabled suggestions, such as recommending shots or cocktails you can make from what you have loaded, and offering practical substitutions."}
-      },
-      {
-        "@type":"Question",
-        "name":"Is it only for shots?",
-        "acceptedAnswer":{"@type":"Answer","text":"No. Shot Caddie is designed for both shots and cocktails, depending on your recipe setup and bottle selection."}
-      },
-      {
-        "@type":"Question",
-        "name":"When does Shot Caddie launch?",
-        "acceptedAnswer":{"@type":"Answer","text":"Shot Caddie is targeting a Q2 2026 release. Join the early access list for updates."}
-      }
-    ]
-  }
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Shot Caddie™</title>
+<meta name="description" content="Answers to common questions about Shot Caddie: why it's called Shot Caddie, the difference between the Original and the 2.0, bottle counts, customization, phone control, and availability.">
+<link rel="canonical" href="https://shotcaddie.net/faq.html">
+<meta property="og:title" content="FAQ — Shot Caddie™">
+<meta property="og:description" content="Why 'Shot Caddie'? What's the difference between the Original and the 2.0? Answers here.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shotcaddie.net/faq.html">
+<meta property="og:image" content="https://shotcaddie.net/images/original-barware.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 48'%3E%3Crect width='40' height='48' rx='8' fill='%230c2b1f'/%3E%3Cpath d='M10 20l3 24h14l3-24' fill='none' stroke='%23f6f0e1' stroke-width='3'/%3E%3Cline x1='20' y1='4' x2='20' y2='28' stroke='%23f6f0e1' stroke-width='3'/%3E%3Cpath d='M20 4l12 5-12 5z' fill='%23c13a2b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Great+Vibes&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.faq-list { max-width: 760px; }
+.faq-list details { background: var(--tee); border: 1px solid var(--paper-edge); border-radius: var(--radius); margin-bottom: 14px; }
+.faq-list summary { cursor: pointer; padding: 18px 22px; font: 700 1.05rem "Archivo", sans-serif; list-style: none; position: relative; padding-right: 48px; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; position: absolute; right: 22px; top: 14px; font-size: 1.4rem; color: var(--brass); }
+.faq-list details[open] summary::after { content: "–"; }
+.faq-list details div { padding: 0 22px 20px; color: var(--ink-soft); }
+.faq-list details div p:last-child { margin-bottom: 0; }
+</style>
 </head>
-
 <body>
-  <div class="wrap">
-    <nav>
-      <a href="/">← Home</a>
-      <a href="/how-it-works.html">How it works</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Shot Caddie home">
+      <svg viewBox="0 0 40 48" aria-hidden="true"><path d="M10 20l3 24h14l3-24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="20" y1="4" x2="20" y2="28" stroke="currentColor" stroke-width="3"/><path d="M20 4l12 5-12 5z" fill="#c13a2b"/></svg>
+      Shot&nbsp;Caddie<span class="tm">™</span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="original.html">Original</a>
+      <a href="shot-caddie-2.html">2.0</a>
+      <a href="trivia.html">Trivia</a>
+      <a href="barware.html">Barware</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="faq.html" aria-current="page">FAQ</a>
     </nav>
-
-    <div class="card">
-      <h1>FAQ</h1>
-      <p>Answers to common questions about Shot Caddie.</p>
-    </div>
-
-    <div class="card">
-      <h2>What is Shot Caddie?</h2>
-      <p>
-        Shot Caddie is a smart, automated shot and cocktail dispenser built to help you load your favorite spirits and mixers,
-        discover what you can make, and pour consistent drinks quickly.
-      </p>
-
-      <h2>How many bottles can it hold?</h2>
-      <p>
-        Shot Caddie is designed around a <strong>16-bottle</strong> system so you can stock a wide range of spirits, liqueurs, juices, and mixers.
-      </p>
-
-      <h2>Does it support AI?</h2>
-      <p>
-        Shot Caddie is designed to support an <strong>optional AI-enabled mixologist</strong> experience that can suggest drinks,
-        recommend swaps, and help you discover combinations based on what’s loaded. (AI features may vary at launch.)
-      </p>
-
-      <h2>Is it only for shots?</h2>
-      <p>
-        Not at all — it’s designed for shots and cocktails. Your recipe library and what you stock in the 16 slots determines what’s available.
-      </p>
-
-      <h2>How do consistent pours work?</h2>
-      <p>
-        Shot Caddie is built around calibration so timing can be tuned per ingredient (spirits vs. juices) to improve consistency over time.
-      </p>
-
-      <h2>When will it be available?</h2>
-      <p>
-        Target release is <strong>Q2 2026</strong>. Join the early access list on the homepage for updates.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>Join the early access list</h2>
-      <p>
-        Go to <a href="/">shotcaddie.net</a> to sign up for launch updates.
-      </p>
-    </div>
-
-    <footer>© <span id="year"></span> Shot Caddie</footer>
   </div>
+</header>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<main>
+
+<section class="band" style="padding:72px 0;">
+  <div class="wrap">
+    <p class="eyebrow">FAQ</p>
+    <h1>Questions from the clubhouse</h1>
+    <p class="lede">Everything people ask about the Original, the 2.0, Trivia, and the barware.</p>
+  </div>
+</section>
+
+<section class="sheet">
+  <div class="wrap">
+    <div class="faq-list">
+
+      <details>
+        <summary>What is Shot Caddie?</summary>
+        <div><p>Shot Caddie is a family of golf-inspired drink systems for home entertaining: the <a href="original.html">Original</a>, a manual two-station mixing system with quarter-ounce pumps and engraved menus; the <a href="shot-caddie-2.html">2.0</a>, an automated shot and drink maker with sixteen smart bottles; <a href="trivia.html">Shot Caddie Trivia</a>, a game-night machine where a wrong answer costs a shot; and matching <a href="barware.html">barware</a> engraved and printed in our own shop.</p></div>
+      </details>
+
+      <details>
+        <summary>Why is it called "Shot Caddie"?</summary>
+        <div><p>It's a golf pun — and we mean both meanings. In golf, a caddie is the player's personal attendant, the one at your side for every shot of the round. Our machines do the same job at the 19th hole, where a "shot" is the kind you sip. The caddie serves the golfer's shots on the course; the Shot Caddie serves yours at the bar.</p></div>
+      </details>
+
+      <details>
+        <summary>What's the difference between the Original and the 2.0?</summary>
+        <div><p>The Original is manual: you follow pump-count recipes from the engraved menu (each press pours ¼ oz) and mix in the center shaker. The 2.0 is automated: pick a drink on the touchscreen or your phone and the machine measures, mixes, and pours it for you — no shaker needed.</p></div>
+      </details>
+
+      <details>
+        <summary>How many bottles does each hold?</summary>
+        <div><p>The Original holds sixteen 500 mL glass bottles across two stations — eight liquors around the center shaker and eight mixers in two rows of four. The 2.0 holds sixteen 8–16 oz bottles in any combination, and the Mini 2.0 holds six or eight.</p></div>
+      </details>
+
+      <details>
+        <summary>Is it only for shots?</summary>
+        <div><p>Not at all. Both machines are built for shots <em>and</em> full mixed drinks. The Original's menu covers both (just scale the pump counts), and the 2.0's library holds thousands of drinks and cocktails, plus any recipes you save yourself.</p></div>
+      </details>
+
+      <details>
+        <summary>How do consistent pours work?</summary>
+        <div><p>On the Original, every pump press dispenses ¼ oz, so a recipe pours the same way every time (pump volume is approximate and can vary slightly with the liquid and technique). On the 2.0, the system uses automated measured pours with per-ingredient calibration, so spirits and juices each pour true.</p></div>
+      </details>
+
+      <details>
+        <summary>Can I customize my setup?</summary>
+        <div><p>Yes. On the Original, choose our standard liquor-and-mixer lineup or send your own — we laser-engrave your bottle labels and a custom wood menu board to match. On the 2.0, you label the bottle slots yourself and can save unlimited recipes of your own. Barware can be personalized with custom text and artwork for gifts, events, and business.</p></div>
+      </details>
+
+      <details>
+        <summary>Can I use my phone?</summary>
+        <div><p>Yes. The 2.0 can be fully controlled from your phone — choose drinks, configure the system, and even queue pours to claim at the machine with a QR code. Shot Caddie Trivia lets players join and answer from their phones instead of the touchscreen.</p></div>
+      </details>
+
+      <details>
+        <summary>What does facial recognition do on the 2.0?</summary>
+        <div><p>It's an optional convenience feature: look at the camera and the 2.0 pulls up your favorite drinks and releases anything you've queued from your phone. Prefer not to use it? The feature is optional and can be left off — QR codes work too.</p></div>
+      </details>
+
+      <details>
+        <summary>Are the bottles dishwasher safe?</summary>
+        <div><p>The Original's 500 mL glass bottles are dishwasher safe. The pumps should be hand washed.</p></div>
+      </details>
+
+      <details>
+        <summary>When can I buy one?</summary>
+        <div><p>All three machines are in development, and everything launches first on Kickstarter, followed by direct sales here at shotcaddie.net. <a href="#signup">Join the launch list</a> to be first when ordering opens.</p></div>
+      </details>
+
+      <details>
+        <summary>Who is Shot Caddie for?</summary>
+        <div><p>Adults of legal drinking age who like to entertain — home bars, parties, game rooms, tailgates, and golf outings. Please drink responsibly: Shot Caddie products are designed for adult beverage dispensing and are not medical or safety devices.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<section class="sheet sheet--tee rule-top">
+  <div class="wrap">
+    <div class="signup" id="signup">
+      <p class="eyebrow">Launch list</p>
+      <h2 class="mt-0">Be first on the tee</h2>
+      <p>Join the list for launch timing, photos, and preorder announcements.</p>
+      <!-- WIRE-UP: replace this form's action/method (or the whole form) with the signup embed
+           from your current email provider — copy it from the live shotcaddie.net page source. -->
+      <form action="#" method="post" onsubmit="alert('Connect this form to your email provider before launch — see README.txt'); return false;">
+        <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required>
+        <button class="btn" type="submit">Notify me</button>
+      </form>
+      <small>No spam — only Shot Caddie updates.</small>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Shot Caddie home">
+      <svg viewBox="0 0 40 48" aria-hidden="true"><path d="M10 20l3 24h14l3-24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><line x1="20" y1="4" x2="20" y2="28" stroke="currentColor" stroke-width="3"/><path d="M20 4l12 5-12 5z" fill="#c13a2b"/></svg>
+      Shot&nbsp;Caddie<span class="tm">™</span>
+    </a>
+    <p>Shot Caddie™ is a family of golf-inspired drink systems — the manual Original, the automated 2.0, Shot Caddie Trivia, and matching barware — designed and built in the USA.</p>
+    <p class="fineprint">Please drink responsibly. Shot Caddie products are designed for adults of legal drinking age and are not medical or safety devices. Features and specifications may evolve before launch.<br>© 2026 Shot Caddie. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function () {
+  var links = document.getElementById('nav-links');
+  var open = links.classList.toggle('open');
+  this.setAttribute('aria-expanded', open);
+});
+</script>
 </body>
 </html>
