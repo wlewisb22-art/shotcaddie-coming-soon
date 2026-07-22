@@ -122,13 +122,12 @@
       <p class="eyebrow">Launch list</p>
       <h2 class="mt-0">Be first on the tee</h2>
       <p>Kickstarter backers get first pours. Join the list for launch timing, preorder announcements, and build photos of the Original, the 2.0, and Trivia.</p>
-      <!-- WIRE-UP: replace this form's action/method (or the whole form) with the signup embed
-           from your current email provider — copy it from the live shotcaddie.net page source. -->
-      <form action="#" method="post" onsubmit="alert('Connect this form to your email provider before launch — see README.txt'); return false;">
+      <form class="signup-form" data-signup data-source="Home">
         <input type="email" name="email" placeholder="Enter your email" aria-label="Email address" required>
         <button class="btn" type="submit">Notify me</button>
       </form>
-      <small>No spam — only Shot Caddie updates.</small>
+      <noscript><p style="margin-top:12px"><a class="btn" href="mailto:orders@flyingbindustries.com?subject=Shot%20Caddie%20launch%20list">Email us to join the launch list</a></p></noscript>
+      <small>Opens your email app with a ready-to-send message — no signup needed. No spam, just Shot Caddie updates.</small>
     </div>
   </div>
 </section>
@@ -153,5 +152,6 @@ document.querySelector('.nav-toggle').addEventListener('click', function () {
   this.setAttribute('aria-expanded', open);
 });
 </script>
+<script src="js/site.js" defer></script>
 </body>
 </html>
